@@ -3,6 +3,12 @@
   color: white;
 }
 
+.thumbnail {
+  width: 200px;
+  height: 200px;
+  border: solid black;
+}
+
 
 
 
