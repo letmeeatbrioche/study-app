@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import DeleteNoteButton from './DeleteNoteButton'
 
 type Props = {
   image: string,
@@ -22,6 +23,7 @@ const NoteView = (props: Props) => {
         <Link href={'#'}>
           <button type='button'>Edit</button>
         </Link>
+        <DeleteNoteButton />
       </div>
     </>
   )
