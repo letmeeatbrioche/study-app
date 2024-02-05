@@ -23,8 +23,17 @@
   border: solid black;
 }
 
-.dropdown-container, .dropdown-item {
+/* .dropdown-container, .dropdown-item {
   border: solid black;
+} */
+
+.spacer {
+  height: 100px;
+}
+
+.uploaded-img {
+  height: 300px;
+  width: 300px;
 }
 
 
