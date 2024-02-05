@@ -4,6 +4,8 @@ import Thumbnail from '@/components/Thumbnail'
 import DeleteCategory from '@/components/DeleteCategory'
 import NoteView from '@/components/NoteView'
 import NoteEditCreate from '@/components/NoteEditCreate'
+import Link from 'next/link'
+import ImageUpload from '@/components/ImageUpload'
 
 const testProps = {
   name: 'Math and raggle and fraggle',
@@ -20,6 +22,7 @@ export default function Home() {
       <DeleteCategory />
       <NoteView image={testProps.image} text={testProps.text} title={testProps.title} category={testProps.category} />
       <NoteEditCreate />
+      <div className='spacer'></div>
     </>
   )
 }
