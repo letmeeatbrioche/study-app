@@ -6,6 +6,7 @@ import NoteView from '@/components/NoteView'
 import NoteEditCreate from '@/components/NoteEditCreate'
 import Link from 'next/link'
 import ImageUpload from '@/components/ImageUpload'
+import Button from '@mui/material/Button';
 
 const testProps = {
   name: 'Math and raggle and fraggle',
