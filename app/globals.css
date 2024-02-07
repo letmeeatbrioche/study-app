@@ -22,13 +22,16 @@
   /* object-fit: contain; */
 }
 
-.form {
-  border: solid black;
+.paper-form {
+  /* border: solid black; */
+  width: 70%;
+  margin: 0 auto;
+  height: 85vh;
 }
 
-/* .dropdown-container, .dropdown-item {
+.dropdown-container, .dropdown-item {
   border: solid black;
-} */
+}
 
 .spacer {
   height: 100px;
@@ -58,7 +61,37 @@
   border: solid black;
 } */
 
+.image-upload {
+  width: 400px;
+  height: 600px;
+  /* border: grey dashed; */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+/* .image-upload-button-container {
+  border: grey dashed;
+} */
+
+/* .save-button {
+  display: inline-block;
+} */
+
+/* .form-grid-item {
+  border: solid black;
+} */
+
+.note-text-input {
+  width: 100%;
+  height: 50vh;
+  margin: 10% 0;
+}
+
+.note-title-input {
+  width: 100%;
+}
 
 
 
