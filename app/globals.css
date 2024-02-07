@@ -33,9 +33,20 @@
   border: solid black;
 }
 
-/* .dropdown-container, .dropdown-item {
-  border: solid black;
-} */
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-item {
+  background-color: white;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: -3px;
+  width: 100%;
+}
 
 .spacer {
   height: 100px;
