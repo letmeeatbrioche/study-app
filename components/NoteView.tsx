@@ -49,13 +49,13 @@ const NoteView = (props: Props, params: object | undefined) => {
                 <h3 className='note-category'>{props.category}</h3>
                 <p>{props.text}</p>
                 <Link href={'/edit/123'}>
-                  <Button variant="contained" href='/edit/123'>
+                  <Button variant="contained">
                     Edit
                   </Button>
                 </Link>
                 {!params &&
                   <Link href={'/note-view/123'}>
-                    <Button variant="contained" href="/note-view/123">
+                    <Button variant="contained">
                       View Note
                     </Button>
                   </Link>
