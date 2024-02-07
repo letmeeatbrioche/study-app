@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
 import "@uploadthing/react/styles.css";
+import CssBaseline from '@mui/material/CssBaseline';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,11 +18,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Nav />
-        {children}
-      </body>
-    </html>
+      <html lang="en">
+        <head>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+        </head>
+        <body className={inter.className}>
+          <>
+            <CssBaseline />
+            <Nav />
+            {children}
+          </>
+        </body>
+      </html>
   )
 }
