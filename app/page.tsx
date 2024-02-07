@@ -22,8 +22,6 @@ export default function Home() {
       <Thumbnail name={testProps.name} image={testProps.image}/>
       <DeleteCategory />
       <NoteView image={testProps.image} text={testProps.text} title={testProps.title} category={testProps.category} />
-      <NoteEditCreate image={testProps.image} text={testProps.text} title={testProps.title} category={testProps.category} categories={testProps.categories} />
-      <div className='spacer'></div>
     </>
   )
 }
