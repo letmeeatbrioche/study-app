@@ -1,12 +1,15 @@
 "use client"
 import React, { useState } from 'react'
 
-type Props = {}
+type Props = {
+  currentCategory: string,
+  categories: string[]
+}
 
 const CategoryDropdown = (props: Props) => {
   const options = ['Category 1', 'Category 2', 'Category 3'];
   const [isActive, setIsActive] = useState(false);
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState(props.currentCategory);
 
   return (
     <div className='dropdown-container'>
@@ -14,8 +17,8 @@ const CategoryDropdown = (props: Props) => {
 
       {isActive &&
         <div className='dropdown-menu'>
-          {options.map((option) =>
-            <div className='dropdown-item' onClick={() => {setSelected(option); setIsActive(!isActive)}}>{option}</div>
+          {props.categories.map((category) =>
+            <div className='dropdown-item' onClick={() => {setSelected(category); setIsActive(!isActive)}}>{category}</div>
           )}
         </div>
       }

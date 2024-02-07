@@ -9,7 +9,12 @@ const testProps = {
   category: 'Squirrels'
 }
 
-type Props = {}
+type Props = {
+  image: string,
+  text: string,
+  title: string,
+  category: string
+}
 
 const NoteViewPage = (props: Props) => {
   return (

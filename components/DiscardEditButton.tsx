@@ -8,7 +8,7 @@ const DiscardEditButton = (props: Props) => {
   // Function: redirect to previous page without performing any CRUD operations
   return (
     <Link href={'/'}>
-      <Button href='/'>
+      <Button>
         Discard Edits
       </Button>
     </Link>

@@ -25,13 +25,17 @@
 .paper-form {
   /* border: solid black; */
   width: 70%;
-  margin: 0 auto;
-  height: 85vh;
+  margin: 10px auto;
+  height: auto;
 }
 
 .dropdown-container, .dropdown-item {
   border: solid black;
 }
+
+/* .dropdown-container, .dropdown-item {
+  border: solid black;
+} */
 
 .spacer {
   height: 100px;
