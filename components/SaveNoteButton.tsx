@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import React from 'react'
 
 type Props = {
@@ -9,7 +10,9 @@ const SaveNoteButton = (props: Props) => {
     // Functions:
       // Change submit button behavior depending on if creating or editing a note
       // Editing a note will require (I think) a note id prop
-    <button type='submit'>SaveNoteButton</button>
+    <Button variant="contained">
+      Save
+    </Button>
   )
 }
 
