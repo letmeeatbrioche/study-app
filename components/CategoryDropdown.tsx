@@ -7,7 +7,6 @@ type Props = {
 }
 
 const CategoryDropdown = (props: Props) => {
-  const options = ['Category 1', 'Category 2', 'Category 3'];
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState(props.currentCategory);
 
