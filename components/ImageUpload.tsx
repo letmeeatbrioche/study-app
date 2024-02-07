@@ -28,28 +28,33 @@ export default function ImageUpload() {
   ) : null
 
   return (
-    <main className="">
-      <UploadButton
-        endpoint="imageUploader"
-        onClientUploadComplete={(res) => {
-          if (res) {
-            // Do something with the response
-            const json = JSON.stringify(res);
-            const image = res[0].url;
-            console.log("Files (json): ", json);
-            console.log('res[0].url:', image);
-            setImages(image);
-          }
-          // alert("Upload Completed");
-        }}
-        onUploadError={(error: Error) => {
-          // Do something with the error.
-          alert(`ERROR! ${error.message}`);
-        }}
-      />
+    <div className='image-upload'>
       <div>
-        {imageList}
+        {imageList &&
+          <div>
+            {imageList}
+          </div>
+        }
+        <UploadButton
+          className="image-upload-button-container"
+          endpoint="imageUploader"
+          onClientUploadComplete={(res) => {
+            if (res) {
+              // Do something with the response
+              const json = JSON.stringify(res);
+              const image = res[0].url;
+              console.log("Files (json): ", json);
+              console.log('res[0].url:', image);
+              setImages(image);
+            }
+            // alert("Upload Completed");
+          }}
+          onUploadError={(error: Error) => {
+            // Do something with the error.
+            alert(`ERROR! ${error.message}`);
+          }}
+        />
       </div>
-    </main>
+    </div>
   );
 }
