@@ -18,7 +18,6 @@ const NoteEditCreate = (props: Props) => {
   return (
     <Paper className='paper-form' elevation={3}>
       <h1>Note Edit/Create</h1>
-      <h2>{props.title}</h2>
       <form>
         <Grid container justifyContent='space-around' >
           <Grid item xs={5.7} className='form-grid-item'>
