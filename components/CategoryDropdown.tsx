@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 type Props = {}
 
 const CategoryDropdown = (props: Props) => {
+  const options = ['Category 1', 'Category 2', 'Category 3'];
   const [isActive, setIsActive] = useState(false);
-  const [selected, setSelected] = useState('');
-  const options = ['Option 1', 'Option 2', 'Option 3'];
+  const [selected, setSelected] = useState(options[0]);
 
   return (
     <div className='dropdown-container'>
