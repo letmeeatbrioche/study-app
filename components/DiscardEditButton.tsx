@@ -1,3 +1,5 @@
+import { Button } from '@mui/material'
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {}
@@ -5,7 +7,11 @@ type Props = {}
 const DiscardEditButton = (props: Props) => {
   // Function: redirect to previous page without performing any CRUD operations
   return (
-    <button type='button'>DiscardEditButton</button>
+    <Link href={'/'}>
+      <Button href='/'>
+        Discard Edits
+      </Button>
+    </Link>
   )
 }
 
