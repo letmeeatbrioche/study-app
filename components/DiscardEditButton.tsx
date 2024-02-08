@@ -6,9 +6,13 @@ type Props = {}
 
 const DiscardEditButton = (props: Props) => {
   // Function: redirect to previous page without performing any CRUD operations
+  // Function: onClick for button to confirmation dialog
+  const discardConfirm = () => {
+    confirm('Are you sure you want to discard edits?');
+  }
   return (
     <Link href={'/'}>
-      <Button>
+      <Button onClick={() => discardConfirm()}>
         Discard Edits
       </Button>
     </Link>
