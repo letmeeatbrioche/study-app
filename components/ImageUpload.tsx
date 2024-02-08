@@ -16,7 +16,7 @@ export type UploadFileResponse<TServerOutput> = {
 };
 
 type Props = {
-  image: string
+  image?: string
 }
 
 export default function ImageUpload(props: Props) {
@@ -35,17 +35,19 @@ export default function ImageUpload(props: Props) {
   return (
 
     <div className='image-upload'>
+
       <div>
-        {imageList ?
-          <div>
-            {imageList}
-          </div>
-          :
+        {props.image ?
           <div>
             <Link href={props.image} target='_blank'>
               <img className="Note image" src={props.image} alt="User-uploaded image" />
             </Link>
           </div>
+        : imageList ?
+          <div>
+            {imageList}
+          </div>
+        : null
         }
 
         <UploadButton
