@@ -13,7 +13,7 @@ const testProps1 = {
   text: `"They use a mental, spatial map in order to find it. Think of a squirrel GPS. And they go off of, okay there's a rock here, and a tree there, the nut is somewhere between there," Tekiela said. Then, they use their sense of smell to find the exact location, even under the snow."`,
   title: 'How squirrels find their burried food',
   category: 'Squirrels',
-  categories: ['Squirrels', 'Category 1', 'Category 2', 'Category 3', 'Category','Category','Category','Category','Category']
+  categories: ['Squirrels', 'Category 1', 'Category 2', 'Category 3', 'Category']
 }
 
 const testProps2 = {
