@@ -37,16 +37,16 @@ export default function ImageUpload(props: Props) {
     <div className='image-upload'>
 
       <div>
-        {props.image ?
-          <div>
-            <Link href={props.image} target='_blank'>
-              <img className="Note image" src={props.image} alt="User-uploaded image" />
-            </Link>
-          </div>
-        : imageList ?
+        {imageList ?
           <div>
             {imageList}
           </div>
+        : props.image ?
+        <div>
+          <Link href={props.image} target='_blank'>
+            <img className="Note image" src={props.image} alt="User-uploaded image" />
+          </Link>
+        </div>
         : null
         }
 
