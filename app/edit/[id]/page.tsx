@@ -1,4 +1,4 @@
-import NoteEditCreate from '@/components/NoteEditCreate'
+import NoteEdit from '@/components/NoteEdit'
 import { Paper } from '@mui/material'
 import React from 'react'
 
@@ -28,7 +28,7 @@ const editNote = async (props: Props) => {
   const categories = await getAllCategories();
   return (
     <>
-      <NoteEditCreate image={testProps.image} text={testProps.text} title={testProps.title} category={testProps.category} categories={categories} />
+      <NoteEdit image={testProps.image} text={testProps.text} title={testProps.title} category={testProps.category} categories={categories} />
     </>
   )
 }
