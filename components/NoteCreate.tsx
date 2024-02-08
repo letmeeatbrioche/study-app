@@ -7,28 +7,24 @@ import ImageUpload from './ImageUpload'
 import { Grid, Paper } from '@mui/material'
 
 type Props = {
-  image: string,
-  text: string,
-  title: string,
-  category: string,
   categories: string[]
 }
 
-const NoteEditCreate = (props: Props) => {
+const NoteCreate = (props: Props) => {
   return (
     <Paper className='paper-form' elevation={3}>
-      <h1>Note Edit/Create</h1>
+      <h1>Note Create</h1>
       <form>
         <Grid container justifyContent='space-around' >
           <Grid item xs={5.7} className='form-grid-item'>
-            <input className='note-title-input' type='text' placeholder='Title' defaultValue={props.title} />
-            <ImageUpload image={props.image} /> {/** GET IMAGE FROM PROPS TO DISPLAY */}
+            <input className='note-title-input' type='text' placeholder='Title' />
+            <ImageUpload />
           </Grid>
           <Grid item xs={5.7} className='form-grid-item'>
-            <CategoryDropdown currentCategory={props.category} categories={props.categories} />
-            <textarea className='note-text-input' placeholder='Notes...' defaultValue={props.text} />
+            <CategoryDropdown categories={props.categories} />
+            <textarea className='note-text-input' placeholder='Notes...' />
             <SaveNoteButton />
-            <DiscardEditButton />
+            <DiscardEditButton buttonText='Note' confirmationText='note' />
           </Grid>
         </Grid>
       </form>
@@ -36,4 +32,4 @@ const NoteEditCreate = (props: Props) => {
   )
 }
 
-export default NoteEditCreate
+export default NoteCreate
