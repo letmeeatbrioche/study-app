@@ -36,10 +36,6 @@ export default function Home() {
           </Grid>
         ))}
       </Grid>
-
-      <DeleteCategory />
-      <NoteView image={testProps1.image} text={testProps1.text} title={testProps1.title} category={testProps1.category} />
-      <NoteView image={testProps2.image} text={testProps2.text} title={testProps2.title} category={testProps2.category} />
     </>
   )
 }
