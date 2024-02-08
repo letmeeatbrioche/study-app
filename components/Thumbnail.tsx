@@ -1,9 +1,10 @@
+import { Box, Paper } from '@mui/material'
 import { url } from 'inspector'
 import Link from 'next/link'
 import React from 'react'
 
 type Props = {
-  name: string,
+  categoryName: string,
   image?: string
 }
 
@@ -16,13 +17,15 @@ it will show the image with title text on top.
 */
 const Thumbnail = (props: Props) => {
   return (
-    <Link href={'#'}>
-      <div
-        className='thumbnail'
-        style={{background: `url(${props.image}) center`}}>
-          {`${props.name.slice(0, 15)}...`}
-      </div>
-    </Link>
+    <div style={{width: '200px', height: '200px'}}>
+      <Link href={'#'}>
+        <Paper elevation={3}>
+          <div className='category-thumbnail' style={{background: `url(${props.image}) center`}}>
+              {props.categoryName}
+          </div>
+        </Paper>
+      </Link>
+    </div>
   )
 }
 
