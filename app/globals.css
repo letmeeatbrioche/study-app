@@ -6,10 +6,16 @@
   font-size: 40px;
 }
 
-.thumbnail {
+.category-thumbnail {
   width: 200px;
   height: 200px;
-  border: solid black;
+  /* border: solid black; */
+  color: black;
+  text-decoration: none;
+}
+
+.category-thumbnail-title {
+  text-decoration: none;
 }
 
 .note-view {
@@ -111,6 +117,10 @@
 .home-button {
   text-decoration: none;
   color: white;
+}
+
+.categories-container {
+  width: 70%;
 }
 
 
