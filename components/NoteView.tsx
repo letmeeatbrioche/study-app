@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Paper } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
+import DeleteNoteButton from './DeleteNoteButton'
 
 type Props = {
   image: string,
@@ -61,6 +62,9 @@ const NoteView = (props: Props, params: object | undefined) => {
                       View Note
                     </Button>
                   </Link>
+                }
+                {!params &&
+                  <DeleteNoteButton />
                 }
               </div>
             </Grid>
