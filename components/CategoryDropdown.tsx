@@ -2,13 +2,13 @@
 import React, { useState } from 'react'
 
 type Props = {
-  currentCategory: string,
+  currentCategory?: string,
   categories: string[]
 }
 
 const CategoryDropdown = (props: Props) => {
   const [isActive, setIsActive] = useState(false);
-  const [selected, setSelected] = useState(props.currentCategory);
+  const [selected, setSelected] = useState(props.currentCategory || props.categories[0]);
 
   return (
     <div className='dropdown-container'>
