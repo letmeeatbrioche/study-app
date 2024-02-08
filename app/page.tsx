@@ -3,7 +3,7 @@ import styles from './page.module.css'
 import Thumbnail from '@/components/Thumbnail'
 import DeleteCategory from '@/components/DeleteCategory'
 import NoteView from '@/components/NoteView'
-import NoteEditCreate from '@/components/NoteEditCreate'
+import NoteEdit from '@/components/NoteEdit'
 import ImageUpload from '@/components/ImageUpload'
 import Button from '@mui/material/Button';
 
