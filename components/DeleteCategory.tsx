@@ -1,4 +1,5 @@
 "use client"
+import { Button } from '@mui/material'
 import React from 'react'
 
 type Props = {}
@@ -13,7 +14,9 @@ const DeleteCategory = (props: Props) => {
   }
 
   return (
-    <button type='button' onClick={testConfirm}>Delete Category</button>
+    <Button variant='contained' onClick={testConfirm}>
+      Delete Category
+    </Button>
   )
 }
 
