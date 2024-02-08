@@ -4,6 +4,8 @@ import './globals.css'
 import Nav from '@/components/Nav'
 import "@uploadthing/react/styles.css";
 import CssBaseline from '@mui/material/CssBaseline';
+import Link from 'next/link';
+import { Button } from '@mui/material';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +28,9 @@ export default function RootLayout({
           <>
             <CssBaseline />
             <Nav />
+            <Link href={'/create'}>
+              <Button variant='contained'>Create New Note</Button>
+            </Link>
             {children}
           </>
         </body>
