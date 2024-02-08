@@ -10,15 +10,12 @@ const Nav = (props: Props) => {
       <Box
         sx={{
           borderRadius: 1,
-          bgcolor: 'primary.main',
-          '&:hover': {
-            bgcolor: 'primary.dark',
-          },
+          bgcolor: 'primary.main'
         }}
         height={100}
         display="flex"
         alignItems="center">
-          <Link href={'/'}>RAGGLE FRAGGLE</Link>
+          <Link className='home-button' href={'/'}>RAGGLE FRAGGLE</Link>
       </Box>
 
     </div>
