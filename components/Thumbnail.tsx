@@ -18,7 +18,7 @@ it will show the image with title text on top.
 const Thumbnail = (props: Props) => {
   return (
     <div style={{width: '200px', height: '200px'}}>
-      <Link href={'#'}>
+      <Link href={'/category/123'}>
         <Paper elevation={3}>
           <div className='category-thumbnail' style={{background: `url(${props.image}) center`}}>
               {props.categoryName}
