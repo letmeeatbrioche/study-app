@@ -7,6 +7,9 @@ import NoteEdit from '@/components/NoteEdit'
 import ImageUpload from '@/components/ImageUpload'
 import Button from '@mui/material/Button';
 import { Box, Grid, Paper } from '@mui/material'
+import { getCategories } from '@/utils/requests'
+import { Category } from '@/models/models'
+
 
 const testProps1 = {
   image: 'https://s3-eu-west-1.amazonaws.com/media.squirrelaccord.uk/2021/09/AdobeStock_239716417_Isle_of_Wight_square_256.jpg',
@@ -24,15 +27,14 @@ const testProps2 = {
   categories: ['Category 1', 'Category 2', 'Category 3', 'Squirrels']
 }
 
-// GET ALL CATEGORIES to show as thumbnails on the home page
-
-export default function Home() {
+export default async function Home() {
+  const categories = await getCategories();
   return (
     <>
       <Grid className='categories-container' container rowSpacing={3} columns={4} justifyContent='space-between' style={{width: '70%', margin: '0 auto'}}>
-        {testProps1.categories.map((category) => (
-          <Grid item xs={1}>
-            <Thumbnail categoryName={category}/>
+        {categories.map((category: Category) => (
+          <Grid item xs={1} key={category._id}>
+            <Thumbnail categoryName={category.name}/>
           </Grid>
         ))}
       </Grid>
