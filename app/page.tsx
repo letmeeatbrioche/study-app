@@ -32,12 +32,15 @@ export default async function Home() {
   return (
     <>
       <Grid className='categories-container' container rowSpacing={3} columns={4} justifyContent='space-between' style={{width: '70%', margin: '0 auto'}}>
-        {categories.map((category: Category) => (
-          <Grid item xs={1} key={category._id}>
-            <Thumbnail categoryName={category.name}/>
-          </Grid>
-        ))}
+        {categories.map((category: Category) => {
+          return (
+            <Grid item xs={1}>
+              <Thumbnail key={category._id} categoryName={category.name} categoryId={category._id}/>
+            </Grid>
+          )
+        })}
       </Grid>
     </>
   )
 }
+
