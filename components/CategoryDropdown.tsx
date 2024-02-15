@@ -2,22 +2,22 @@
 import React, { useState } from 'react'
 
 type Props = {
-  currentCategory?: string,
   categories: string[]
+  selectedCategory?: string,
+  setSelectedCategory: Function,
+  isActive: boolean,
+  setIsActive: Function,
 }
 
 const CategoryDropdown = (props: Props) => {
-  const [isActive, setIsActive] = useState(false);
-  const [selected, setSelected] = useState(props.currentCategory || props.categories[0]);
-
   return (
     <div className='dropdown-container'>
-      <div className='dropdown-button' onClick={() => setIsActive(!isActive)}>{selected}</div>
+      <div className='dropdown-button' onClick={() => props.setIsActive(!props.isActive)}>{props.selectedCategory}</div>
 
-      {isActive &&
+      {props.isActive &&
         <div className='dropdown-menu'>
           {props.categories.map((category) =>
-            <div className='dropdown-item' onClick={() => {setSelected(category); setIsActive(!isActive)}}>{category}</div>
+            <div className='dropdown-item' onClick={() => {props.setSelectedCategory(category); props.setIsActive(!props.isActive)}}>{category}</div>
           )}
         </div>
       }

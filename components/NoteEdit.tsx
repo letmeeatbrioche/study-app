@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import SaveNoteButton from './SaveNoteButton'
 import DiscardEditButton from './DiscardEditButton'
 import CategoryDropdown from './CategoryDropdown'
@@ -11,22 +11,27 @@ type Props = {
   text: string,
   title: string,
   category: string,
-  categories: string[]
+  categories: string[],
 }
 
 const NoteEdit = (props: Props) => {
+  const [noteTitle, setNoteTitle] = useState(props.title);
+  const [noteText, setNoteText] = useState(props.text);
+  const [isActive, setIsActive] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(props.category || props.categories[0]);
+
   return (
     <Paper className='paper-form' elevation={3}>
       <h1>Note Edit</h1>
       <form>
         <Grid container justifyContent='space-around' >
           <Grid item xs={5.7} className='form-grid-item'>
-            <input className='note-title-input' type='text' placeholder='Title' defaultValue={props.title} />
+            <input className='note-title-input' type='text' placeholder='Title' value={noteTitle} onChange={(e) => setNoteTitle(e.target.value)} />
             <ImageUpload image={props.image} /> {/** GET IMAGE FROM PROPS TO DISPLAY */}
           </Grid>
           <Grid item xs={5.7} className='form-grid-item'>
-            <CategoryDropdown currentCategory={props.category} categories={props.categories} />
-            <textarea className='note-text-input' placeholder='Notes...' defaultValue={props.text} />
+            <CategoryDropdown categories={props.categories} isActive={isActive} setIsActive={setIsActive} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            <textarea className='note-text-input' placeholder='Notes...' value={noteText} onChange={(e) => setNoteText(e.target.value)} />
             <SaveNoteButton />
             <DiscardEditButton buttonText='Edits' confirmationText='edits' />
           </Grid>
