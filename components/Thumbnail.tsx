@@ -1,5 +1,6 @@
 import { Box, Paper } from '@mui/material'
 import { url } from 'inspector'
+import { ObjectId } from 'mongodb'
 import Link from 'next/link'
 import React from 'react'
 
@@ -7,7 +8,7 @@ type Props = {
   categoryName: string,
   image?: string,
   key: string,
-  categoryId: string
+  categoryId: string | undefined | ObjectId
 }
 
 /*
