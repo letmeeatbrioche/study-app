@@ -33,5 +33,3 @@ const editNote = async (props: Props) => {
     </>
   )
 }
-
-export default editNote
