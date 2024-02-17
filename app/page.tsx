@@ -1,11 +1,4 @@
-import Image from 'next/image'
-import styles from './page.module.css'
 import Thumbnail from '@/components/Thumbnail'
-import DeleteCategory from '@/components/DeleteCategory'
-import NoteView from '@/components/NoteView'
-import NoteEdit from '@/components/NoteEdit'
-import ImageUpload from '@/components/ImageUpload'
-import Button from '@mui/material/Button';
 import { Box, Grid, Paper } from '@mui/material'
 import { getCategories } from '@/utils/requests'
 import { Category } from '@/models/models'
