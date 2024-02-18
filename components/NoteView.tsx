@@ -7,9 +7,11 @@ type Props = {
   image: string,
   text: string,
   title: string,
-  category: string
+  category: string,
+  id: string
 }
-
+// props: Props, params: object | undefined
+// params: {id: string}, props: Props
 const NoteView = (props: Props, params: object | undefined) => {
   return (
     <div className='view-note-container'>
@@ -19,6 +21,7 @@ const NoteView = (props: Props, params: object | undefined) => {
           <Grid container >
             <Grid xs={6}>
               <div className='grid-item' >
+                <h2>{props.id}</h2>
                 <h2 className='note-title'>{props.title}</h2>
                 <div className='note-image' style={{background: `url(${props.image})`}}></div>
               </div>
@@ -35,7 +38,7 @@ const NoteView = (props: Props, params: object | undefined) => {
                   </Link>
                 }
                 {!params &&
-                  <Link href={'/note-view/123'}>
+                  <Link href={`/note-view/${props.id}`}>
                     <Button variant="contained">
                       View Note
                     </Button>
