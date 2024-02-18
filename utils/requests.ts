@@ -1,5 +1,3 @@
-import { NextRequest, NextResponse } from "next/server";
-
 // GET all categories
 export const getCategories = async () => {
   try {
@@ -13,7 +11,7 @@ export const getCategories = async () => {
     const categories = await res.json();
     return categories;
   } catch (error) {
-    console.log('Error in getCategories:', error);
+    console.log('Error getting all categories:', error);
   }
 }
 
@@ -30,6 +28,24 @@ export const getNotes = async (id: string) => {
     const notes = await res.json();
     return notes;
   } catch (error) {
-    console.log('Error in getNotes:', error);
+    console.log('Error getting all notes:', error);
+  }
+}
+
+// GET one note
+export const getNote = async (id: string) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/note/${id}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error('Could not get note in getNote');
+    const note = await res.json();
+    console.log('note:', note);
+    return note;
+  } catch (error) {
+    console.log('Error getting one note:', error);
   }
 }
