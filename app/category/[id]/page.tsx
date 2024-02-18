@@ -20,7 +20,7 @@ const CategoryPage = async ({ params }: { params: { id: string } }, props: Props
       <h2>Notes gotten: {notes.length}</h2>
       <DeleteCategory />
       {notes.map((note: Note) => (
-        <NoteView key={note._id} image={note.image} text={note.text} title={note.title} category={note.category}></NoteView>
+        <NoteView id={note._id} image={note.image} text={note.text} title={note.title} category={note.category}></NoteView>
       ))}
     </>
   )
