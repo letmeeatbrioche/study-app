@@ -31,7 +31,7 @@ const NoteView = (props: Props, params: object | undefined) => {
                 <h3 className='note-category'>{props.category}</h3>
                 <p>{props.text}</p>
                 {!params &&
-                  <Link href={'/edit/123'}>
+                  <Link href={`/edit/${props.id}`}>
                     <Button variant="contained">
                       Edit
                     </Button>

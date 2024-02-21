@@ -12,6 +12,7 @@ type Props = {
   title: string,
   category: string,
   categories: string[],
+  id: string
 }
 
 const NoteEdit = (props: Props) => {
