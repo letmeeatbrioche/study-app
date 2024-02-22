@@ -44,9 +44,11 @@ const NoteView = (props: Props, params: object | undefined) => {
                     </Button>
                   </Link>
                 }
+
                 {!params &&
-                  <DeleteNoteButton />
+                  <DeleteNoteButton id={props.id} categoryId={props.category} />
                 }
+
               </div>
             </Grid>
           </Grid>
