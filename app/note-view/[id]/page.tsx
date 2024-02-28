@@ -20,9 +20,17 @@ type Props = {
 }
 
 const NoteViewPage = async ({ params }: { params: { id: string } }, props: Props) => {
+  // if (params.id) {
+  //   var note = await getNote(params.id);
+  // }
   const note = await getNote(params.id);
+
   return (
-    <NoteView image={note.image} text={note.text} title={note.title} category={note.category} id={note.id} />
+    <>
+      {note ?
+        <NoteView image={note.image} text={note.text} title={note.title} category={note.category} id={note.id} />
+        : <h1>No notes to display!</h1>}
+    </>
   )
 }
 

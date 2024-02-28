@@ -1,5 +1,47 @@
 "use client"
 import { Button } from '@mui/material'
+import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import React from 'react'
+
+type Props = {}
+
+const DeleteCategory = (props: Props) => {
+  const router = useRouter();
+  const path = usePathname();
+  const id = path.slice(path.lastIndexOf('/') + 1);
+
+  const confirmDelete = () => {
+    const confirmed = confirm(`Are you sure you want to delete this category and all notes in it? ID: ${id}`);
+
+    if (confirmed) {
+      const deleteCategory = fetch(`http://localhost:3000/api/category/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
+      })
+      .then((res) => res && router.push(`/`))
+      .catch((error) => {
+        console.log('Error deleting category in DeleteCategoryButton:', error)
+        alert('Problem deleting category. Please try again.')
+      })
+    }
+  }
+
+  return (
+    <Button variant='contained' onClick={confirmDelete}>
+      Delete Category
+    </Button>
+  )
+}
+
+export default DeleteCategory
+
+/* PREVIOUS WORKING CODE
+"use client"
+import { Button } from '@mui/material'
 import React from 'react'
 
 type Props = {}
@@ -21,3 +63,5 @@ const DeleteCategory = (props: Props) => {
 }
 
 export default DeleteCategory
+
+*/

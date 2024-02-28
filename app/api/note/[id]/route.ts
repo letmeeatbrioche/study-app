@@ -16,3 +16,24 @@ export async function GET(req: NextRequest, id: { params: any; }) {
     NextResponse.json({errorMsg: error})
   }
 }
+
+// DELETE one note
+export async function DELETE(req: NextRequest, id: { params: any; }) {
+  console.log('ID in DELETE one note ROUTE HANDLER:', id.params.id);
+  try {
+    await connectToDatabase();
+    const query = { _id: new ObjectId(id.params.id) };
+    const result = await collections.notes?.deleteOne(query);
+
+    if (result && result.deletedCount) {
+      return NextResponse.json({res: 'Note successfully deleted'});
+    } else if (!result) {
+      return NextResponse.json(`Failed to remove note with id ${id}`);
+    } else if (!result.deletedCount) {
+      return NextResponse.json(`Note with id ${id} does not exist`);
+    }
+    } catch (error) {
+      console.error(error.message);
+      return NextResponse.json(error.message);
+    }
+}
