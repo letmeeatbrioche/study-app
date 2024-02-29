@@ -17,7 +17,7 @@ const testProps2 = {
   text: `"Squirrels sleep either in trees or in underground burrows at night. After a busy day of playing around, searching for and burying food, they retreat to their nests at night to sleep. Tree squirrels sleep in dens or nests at night."`,
   title: 'Where squirrels live',
   category: 'Squirrels',
-  categories: ['Category 1', 'Category 2', 'Category 3', 'Squirrels']
+  categories: ['Category 1', 'Category 2', 'Interior Design', 'Squirrels']
 }
 
 export default async function Home() {
