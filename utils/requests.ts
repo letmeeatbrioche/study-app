@@ -43,7 +43,7 @@ export const getNote = async (id: string) => {
     });
     if (!res.ok) throw new Error('Could not get note in getNote');
     const note = await res.json();
-    console.log('note:', note);
+    // console.log('note:', note);
     return note;
   } catch (error) {
     console.log('Error getting one note:', error);

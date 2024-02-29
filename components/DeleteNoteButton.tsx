@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { NextResponse } from 'next/server'
 import React from 'react'
-import useSWR from 'swr'
 
 type Props = {
   id: string,

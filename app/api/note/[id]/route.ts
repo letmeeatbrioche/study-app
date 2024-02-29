@@ -10,7 +10,7 @@ export async function GET(req: NextRequest, id: { params: any; }) {
     await connectToDatabase();
     const query = {_id: new ObjectId(id.params.id)};
     const note = await collections.notes?.findOne(query) as Note;
-    console.log('note:', note);
+    // console.log('note:', note);
     return NextResponse.json(note);
   } catch (error) {
     NextResponse.json({errorMsg: error})
@@ -40,4 +40,27 @@ export async function DELETE(req: NextRequest, id: { params: any; }) {
       console.error(error.message);
       return NextResponse.json(error.message);
     }
+}
+
+// EDIT one note
+export async function PUT(req) {
+  console.log('in PUT req handler!!!!!!!')
+  try {
+    await connectToDatabase();
+    const reqObject = await req.json();
+    reqObject.category = new ObjectId(reqObject.category);
+    const noteData = reqObject;
+    const query = { _id: new ObjectId(reqObject.id) };
+    console.log('noteData:', noteData);
+    console.log('query:', query);
+    const result = await collections.notes?.replaceOne(query, noteData);
+    if (result) {
+      return NextResponse.json({success: true});
+    } else {
+      return NextResponse.json({success: false, reason: 'Falsy result'})
+    }
+  } catch (error) {
+    console.log('Error editing note in database:', error);
+    NextResponse.json({success: false})
+  }
 }
