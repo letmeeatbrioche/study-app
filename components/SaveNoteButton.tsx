@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import React from 'react'
 
 type Props = {
-  id?: string
+  id?: string,
 }
 
 const SaveNoteButton = (props: Props) => {

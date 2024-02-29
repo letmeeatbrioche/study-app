@@ -17,16 +17,11 @@ const CategoryPage = async ({ params }: { params: { id: string } }, props: Props
 
   return (
     <>
-    {notes ?
-      <>
-        <h2>Notes gotten: {notes.length}</h2>
-        <DeleteCategory />
-        {notes.reverse().map((note: Note) => (
-          <NoteView id={note._id} image={note.image} text={note.text} title={note.title} category={note.category}></NoteView>
-        ))}
-      </>
-      : <h1>No categories to display</h1>
-    }
+      <h2>Notes gotten: {notes.length}</h2>
+      <DeleteCategory />
+      {notes.reverse().map((note: Note) => (
+        <NoteView id={note._id} image={note.image} text={note.text} title={note.title} category={note.category}></NoteView>
+      ))}
     </>
   )
 }
