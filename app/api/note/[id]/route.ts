@@ -23,13 +23,17 @@ export async function DELETE(req: NextRequest, id: { params: any; }) {
   try {
     await connectToDatabase();
     const query = { _id: new ObjectId(id.params.id) };
+    console.log('query:', query);
     const result = await collections.notes?.deleteOne(query);
+    console.log('result:', result);
 
     if (result && result.deletedCount) {
       return NextResponse.json({res: 'Note successfully deleted'});
     } else if (!result) {
       return NextResponse.json(`Failed to remove note with id ${id}`);
     } else if (!result.deletedCount) {
+      console.log('!!!No deletedCount!!!');
+      console.log(`Note with id ${id} does not exist`);
       return NextResponse.json(`Note with id ${id} does not exist`);
     }
     } catch (error) {
