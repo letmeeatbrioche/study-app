@@ -29,16 +29,17 @@ const DeleteNoteButton = (props: Props) => {
 
 
   const confirmDelete = () => {
-    const confirmed = confirm(`Are you sure you want to delete this note? ID: ${id}`);
+    console.log(`props.id: ${props.id}, props.categoryId: ${props.categoryId}`);
+    const confirmed = confirm(`Are you sure you want to delete this note? ID: ${props.id}`);
     if (confirmed) {
-      const deleteNote = fetch(`http://localhost:3000/api/note/${id}`, {
+      const deleteNote = fetch(`http://localhost:3000/api/note/${props.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
         },
         cache: 'no-store'
       })
-      .then((res) => res && router.push(`/`))
+      .then((res) => res && router.push(`/category/${props.categoryId}`))
       .catch((error) => {
         console.log('Error deleting note in DeleteNoteButton:', error)
         alert('Problem deleting note. Please try again.')
