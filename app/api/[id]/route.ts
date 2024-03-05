@@ -13,8 +13,8 @@ export async function GET(req: NextRequest, id: { params: any; }) {
     // const query = {category: id};
     const query = {category: new ObjectId(id.params.id)};
     const notes = await collections.notes?.find(query).toArray() as Note[];
-    console.log('notes:', notes);
-    return NextResponse.json(notes);
+    // console.log('notes:', notes);
+    return await NextResponse.json(notes);
   } catch (error) {
     NextResponse.json({errorMsg: error})
   }

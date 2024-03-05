@@ -2,6 +2,7 @@ import { Box, Button, Grid, Paper } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 import DeleteNoteButton from './DeleteNoteButton'
+import { getCategories } from '@/utils/requests'
 
 type Props = {
   image: string,
@@ -12,7 +13,10 @@ type Props = {
 }
 // props: Props, params: object | undefined
 // params: {id: string}, props: Props
-const NoteView = (props: Props, params: object | undefined) => {
+const NoteView = async (props: Props, params: object | undefined) => {
+  const categories = await getCategories();
+  const noteCategory = categories.find((category) => category._id === props.category);
+
   return (
     <div className='view-note-container'>
       <Paper className='paper' elevation={3}>
@@ -21,14 +25,13 @@ const NoteView = (props: Props, params: object | undefined) => {
           <Grid container >
             <Grid xs={6}>
               <div className='grid-item' >
-                <h2>{props.id}</h2>
                 <h2 className='note-title'>{props.title}</h2>
                 <div className='note-image' style={{background: `url(${props.image})`}}></div>
               </div>
             </Grid>
             <Grid xs={6}>
               <div className='grid-item' >
-                <h3 className='note-category'>{props.category}</h3>
+                <h3 className='note-category'>{noteCategory.name}</h3>
                 <p>{props.text}</p>
                 {!params &&
                   <Link href={`/edit/${props.id}`}>
