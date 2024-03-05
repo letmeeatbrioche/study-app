@@ -67,8 +67,12 @@ const NoteEdit = (props: Props) => {
     var data = new FormData(event.target);
     console.log('data:', data);
     var formObject = Object.fromEntries(data.entries());
-    const categoryId = props.categories.find((element) => element.name === selectedCategory);
-    formObject.category = categoryId._id;
+    if (categoryNames.indexOf(selectedCategory) > -1) {
+      const categoryId = props.categories.find((element) => element.name === selectedCategory);
+      formObject.category = categoryId._id;
+    } else {
+      formObject.categoryName = selectedCategory;
+    }
     formObject.image = uploadedImage || props.image;
     formObject.id = id;
     setNoteData(formObject);
