@@ -1,10 +1,12 @@
 "use client"
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-type Props = {}
+type Props = {
+  categoryName: string
+}
 
 const DeleteCategory = (props: Props) => {
   const router = useRouter();
@@ -12,7 +14,7 @@ const DeleteCategory = (props: Props) => {
   const id = path.slice(path.lastIndexOf('/') + 1);
 
   const confirmDelete = () => {
-    const confirmed = confirm(`Are you sure you want to delete this category and all notes in it? ID: ${id}`);
+    const confirmed = confirm(`Are you sure you want to delete the "${props.categoryName}" category and all notes inside it?`);
 
     if (confirmed) {
       const deleteCategory = fetch(`http://localhost:3000/api/category/${id}`, {
@@ -31,9 +33,11 @@ const DeleteCategory = (props: Props) => {
   }
 
   return (
-    <Button variant='contained' onClick={confirmDelete}>
-      Delete Category
-    </Button>
+    <Box textAlign='center'>
+      <Button variant='contained' onClick={confirmDelete}>
+        Delete Category
+      </Button>
+    </Box>
   )
 }
 
