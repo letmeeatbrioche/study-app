@@ -1,4 +1,5 @@
 import NoteCreate from '@/components/NoteCreate'
+import { getCategories } from '@/utils/requests';
 import React from 'react'
 
 // Function to get all categories
@@ -7,12 +8,15 @@ const getAllCategories = () => {
   return categories;
 }
 
+
 type Props = {}
 
 const CreateNote = async (props: Props) => {
+  const gottenCategories = await getCategories();
   const categories = await getAllCategories();
+  console.log('after gettingCategories in CreateNote/page.tsx:', gottenCategories);
   return (
-    <NoteCreate categories={categories} />
+    <NoteCreate categories={gottenCategories} />
   )
 }
 

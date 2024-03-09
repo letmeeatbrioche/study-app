@@ -38,13 +38,15 @@ type Props = {
 }
 
 const NoteEdit = (props: Props) => {
+  const categoryNames = props.categories.map((category) => category.name);
   const router = useRouter();
   const path = usePathname();
   const id = path.slice(path.lastIndexOf('/') + 1);
   const [noteTitle, setNoteTitle] = useState(props.title);
   const [noteText, setNoteText] = useState(props.text);
   const [isActive, setIsActive] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(props.category || props.categories[0]);
+  const noteCategory = props.categories.find((category) => category._id === props.category);
+  const [selectedCategory, setSelectedCategory] = useState(noteCategory.name || categoryNames[0]);
   const [noteData, setNoteData] = useState({});
   // IMGAE UPLOADER
   const [uploadedImage, setUploadedImage] = useState<string>('');
@@ -65,7 +67,12 @@ const NoteEdit = (props: Props) => {
     var data = new FormData(event.target);
     console.log('data:', data);
     var formObject = Object.fromEntries(data.entries());
-    formObject.category = selectedCategory;
+    if (categoryNames.indexOf(selectedCategory) > -1) {
+      const categoryId = props.categories.find((element) => element.name === selectedCategory);
+      formObject.category = categoryId._id;
+    } else {
+      formObject.categoryName = selectedCategory;
+    }
     formObject.image = uploadedImage || props.image;
     formObject.id = id;
     setNoteData(formObject);
@@ -135,7 +142,7 @@ const NoteEdit = (props: Props) => {
 
           </Grid>
           <Grid item xs={5.7} className='form-grid-item'>
-            <CategoryDropdown categories={props.categories} isActive={isActive} setIsActive={setIsActive} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            <CategoryDropdown categories={categoryNames} isActive={isActive} setIsActive={setIsActive} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             <textarea className='note-text-input' name='text' placeholder='Notes...' value={noteText} onChange={(e) => setNoteText(e.target.value)} />
             <SaveNoteButton />
             <DiscardEditButton buttonText='Note' confirmationText='note' />

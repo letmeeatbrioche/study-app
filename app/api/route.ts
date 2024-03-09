@@ -18,13 +18,23 @@ export async function GET() {
 export async function POST(req) {
   console.log('in POST req handler!!!!!!!!!!!!!')
   try {
-    await connectToDatabase();
     const reqObject = await req.json();
-    reqObject.category = new ObjectId(reqObject.category);
+    if (reqObject.category) {
+      reqObject.category = new ObjectId(reqObject.category);
+    } else {
+      reqObject.category = new ObjectId();
+    }
+    await connectToDatabase();
+    // Create Category
+    if (reqObject.categoryName) {
+      var createdCategory = await collections.categories?.insertOne({name: reqObject.categoryName, _id: reqObject.category})
+      delete reqObject.categoryName;
+    }
+    // Create Note
     const query = reqObject;
-    console.log('req:', query);
-    const result = await collections.notes?.insertOne(query);
-    if (result) {
+    console.log('reqObject (query):', query);
+    const createdNote = await collections.notes?.insertOne(query);
+    if (createdNote) {
       return NextResponse.json({success: true});
     } else {
       return NextResponse.json({success: false, reason: 'Falsy result'})

@@ -46,9 +46,18 @@ export async function DELETE(req: NextRequest, id: { params: any; }) {
 export async function PUT(req) {
   console.log('in PUT req handler!!!!!!!')
   try {
-    await connectToDatabase();
     const reqObject = await req.json();
-    reqObject.category = new ObjectId(reqObject.category);
+    if (reqObject.category) {
+      reqObject.category = new ObjectId(reqObject.category);
+    } else {
+      reqObject.category = new ObjectId();
+    }
+    await connectToDatabase();
+    // Create Category
+    if (reqObject.categoryName) {
+      var createdCategory = await collections.categories?.insertOne({name: reqObject.categoryName, _id: reqObject.category})
+      delete reqObject.categoryName;
+    }
     const noteData = reqObject;
     const query = { _id: new ObjectId(reqObject.id) };
     console.log('noteData:', noteData);
