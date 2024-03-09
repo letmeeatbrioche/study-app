@@ -4,7 +4,7 @@ import NoteCard from '@/components/NoteCard'
 import NoteView from '@/components/NoteView'
 import stubs from '@/mockData'
 import { Note } from '@/models/models'
-import { getNotes } from '@/utils/requests'
+import { getCategories, getCategory, getNotes } from '@/utils/requests'
 import { Grid } from '@mui/material'
 import { request } from 'http'
 import { usePathname } from 'next/navigation'
@@ -16,16 +16,17 @@ type Props = {}
 
 const CategoryPage = async ({ params }: { params: { id: string } }, props: Props) => {
   let notes = await getNotes(params.id);
+  let category = await getCategory(params.id);
 
   return (
     <>
     {notes ?
       <>
-        <h2>Notes gotten: {notes.length}</h2>
+        <h1 className='category-name'>{category.name}</h1>
 
-        <DeleteCategory />
+        <DeleteCategory categoryName={category.name} />
 
-        <Grid container className='note-cards-container' direction='row' spacing={2} style={{width: '70%', margin: '0 auto'}}>
+        <Grid container className='note-cards-container' direction='row' spacing={2} style={{width: '70%', margin: '20px auto'}}>
             {notes.reverse().map((note: Note) => (
               <Grid item xs={4}>
                 <NoteCard id={note._id} image={note.image} text={note.text} title={note.title} category={note.category}></NoteCard>

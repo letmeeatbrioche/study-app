@@ -15,6 +15,23 @@ export const getCategories = async () => {
   }
 }
 
+// GET one category
+export const getCategory = async (id: string) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/category/${id}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error('Could not get category name, !res.ok');
+    const category = await res.json();
+    return category;
+  } catch (error) {
+    console.log('Error getting category name in getCategory:', error);
+  }
+}
+
 // GET all notes
 export const getNotes = async (id: string) => {
   try {

@@ -28,9 +28,6 @@ export default function RootLayout({
           <>
             <CssBaseline />
             <Nav />
-            <Link href={'/create'}>
-              <Button variant='contained'>Create New Note</Button>
-            </Link>
             {children}
           </>
         </body>

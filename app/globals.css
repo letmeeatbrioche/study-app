@@ -117,6 +117,15 @@
 .home-button {
   text-decoration: none;
   color: white;
+  margin-left: 20px;
+}
+
+.create-note-button {
+  margin-right: 20px;
+}
+
+.category-name {
+  text-align: center;
 }
 
 

@@ -1,4 +1,4 @@
-import { Box, Button, ThemeProvider } from '@mui/material'
+import { Box, Button, Grid, ThemeProvider } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 
@@ -10,12 +10,22 @@ const Nav = (props: Props) => {
       <Box
         sx={{
           borderRadius: 1,
-          bgcolor: 'primary.main'
+          bgcolor: '#273870'
         }}
         height={100}
         display="flex"
         alignItems="center">
-          <Link className='home-button' href={'/'}>RAGGLE FRAGGLE</Link>
+          <Grid container justifyContent='space-between'>
+            <Grid item>
+              <Link className='home-button' href={'/'}>Categori</Link>
+            </Grid>
+
+            <Grid item>
+              <Link className='create-note-button' href={'/create'}>
+                <Button variant='contained'>Create New Note</Button>
+              </Link>
+            </Grid>
+          </Grid>
       </Box>
 
     </div>
