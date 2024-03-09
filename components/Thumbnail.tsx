@@ -20,15 +20,13 @@ it will show the image with title text on top.
 */
 const Thumbnail = (props: Props) => {
   return (
-    <div style={{width: '200px', height: '200px'}}>
-      <Link href={`/category/${props.categoryId}`}>
-        <Paper elevation={3}>
-          <div className='category-thumbnail' style={{background: `url(${props.image}) center`}}>
-              {props.categoryName}
-          </div>
-        </Paper>
-      </Link>
-    </div>
+    <Link className='category-link' href={`/category/${props.categoryId}`}>
+      <Paper elevation={3} square={false} className='category-thumbnail'>
+        {/* <div className='category-thumbnail' style={{background: `url(${props.image}) center`}}> */}
+            <p>{props.categoryName}</p>
+        {/* </div> */}
+      </Paper>
+    </Link>
   )
 }
 
