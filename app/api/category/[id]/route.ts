@@ -32,3 +32,15 @@ export async function DELETE(req: NextRequest, id: { params: any; }) {
       return NextResponse.json(error.message);
     }
 }
+
+// GET one category
+export async function GET(req: NextRequest, id: { params: any; }) {
+  try {
+    await connectToDatabase();
+    const query = {_id: new ObjectId(id.params.id)};
+    const category = await collections.categories?.findOne(query);
+    return NextResponse.json(category);
+  } catch (error) {
+    console.log('Error getting category name:', error);
+  }
+}
