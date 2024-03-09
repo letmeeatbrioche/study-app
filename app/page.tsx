@@ -24,10 +24,11 @@ export default async function Home() {
   const categories = await getCategories();
   return (
     <>
-      <Grid className='categories-container' container rowSpacing={3} columns={4} justifyContent='space-between' style={{width: '70%', margin: '0 auto'}}>
+      <h1 className='your-categories'>Your Categories</h1>
+      <Grid className='categories-container' container rowSpacing={1} columnSpacing={8} style={{width: '70%', margin: '50px auto'}}>
         {categories.map((category: Category) => {
           return (
-            <Grid item xs={1}>
+            <Grid item xs={3} style={{height: '240px', maxWidth: '240px'}}>
               <Thumbnail key={category._id} categoryName={category.name} categoryId={category._id}/>
             </Grid>
           )
@@ -36,4 +37,6 @@ export default async function Home() {
     </>
   )
 }
+
+// rowSpacing={3} columns={4} justifyContent='space-between'
 
