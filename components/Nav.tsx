@@ -12,7 +12,7 @@ const Nav = (props: Props) => {
           borderRadius: 1,
           bgcolor: '#273870'
         }}
-        height={100}
+        height={80}
         display="flex"
         alignItems="center">
           <Grid container justifyContent='space-between'>
