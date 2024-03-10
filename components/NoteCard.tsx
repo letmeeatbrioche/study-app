@@ -22,7 +22,7 @@ const NoteCard = (props: Props) => {
 
         <CardContent>
           <h2 className='note-title'>{props.title}</h2>
-          {/* <p>{`${truncatedText}...`}</p> */}
+          {/* <p className='note-card-text'>{props.text}</p> */}
         </CardContent>
       </CardActionArea>
     </Card>

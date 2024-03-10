@@ -26,11 +26,11 @@ const NoteViewPage = async ({ params }: { params: { id: string } }, props: Props
   const note = await getNote(params.id);
 
   return (
-    <>
+    <div className='full-note-view'>
       {note ?
-        <NoteView image={note.image} text={note.text} title={note.title} category={note.category} id={note.id} />
+        <NoteView image={note.image} text={note.text} title={note.title} category={note.category} id={note._id} />
         : <h1>No notes to display!</h1>}
-    </>
+    </div>
   )
 }
 
