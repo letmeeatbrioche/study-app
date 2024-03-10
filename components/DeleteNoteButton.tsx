@@ -48,7 +48,7 @@ const DeleteNoteButton = (props: Props) => {
   }
 
   return (
-    <Button onClick={() => confirmDelete()} variant="contained">
+    <Button onClick={() => confirmDelete()} variant="outlined">
         Delete Note
     </Button>
   )
