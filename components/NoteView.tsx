@@ -21,38 +21,33 @@ const NoteView = async (props: Props, params: object | undefined) => {
     <div className='view-note-container'>
       <Paper className='paper' elevation={3}>
         <Box sx={{ width: '100%' }}>
-          <h1>Note View</h1>
           <Grid container >
-            <Grid xs={6}>
-              <div className='grid-item' >
-                <h2 className='note-title'>{props.title}</h2>
-                <div className='note-image' style={{background: `url(${props.image})`}}></div>
+            <Grid item xs={6}>
+              <div className='full-note-left-side' >
+                <h1 className='note-title'>{props.title}</h1>
+                <div className='note-image'>
+                  <img src={props.image} alt={`${props.title} note image`} />
+                </div>
               </div>
             </Grid>
-            <Grid xs={6}>
-              <div className='grid-item' >
-                <h3 className='note-category'>{noteCategory.name}</h3>
-                <p>{props.text}</p>
-                {!params &&
+            <Grid item xs={6}>
+              <div className='full-note-right-side'>
+                <div>
+                  <h3 className='note-category'>{noteCategory.name}</h3>
+                  <p className='note-view-text'>{props.text}</p>
+                </div>
+
+                <div className='full-note-buttons'>
                   <Link href={`/edit/${props.id}`}>
                     <Button variant="contained">
                       Edit
                     </Button>
                   </Link>
-                }
-                {!params &&
-                  <Link href={`/note-view/${props.id}`}>
-                    <Button variant="contained">
-                      View Note
-                    </Button>
-                  </Link>
-                }
 
-                {!params &&
                   <DeleteNoteButton id={props.id} categoryId={props.category} />
-                }
-
+                </div>
               </div>
+
             </Grid>
           </Grid>
         </Box>
