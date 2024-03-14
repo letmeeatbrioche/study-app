@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SaveNoteButton from './SaveNoteButton'
 import DiscardEditButton from './DiscardEditButton'
 import CategoryDropdown from './CategoryDropdown'
@@ -46,7 +46,7 @@ const NoteCreate = (props: Props) => {
   const [selectedCategory, setSelectedCategory] = useState(props.category || categoryNames[0]);
   const [noteData, setNoteData] = useState({});
   // IMGAE UPLOADER
-  const [uploadedImage, setUploadedImage] = useState<string>('');
+  const [uploadedImage, setUploadedImage] = useState('');
 
   // IMGAE UPLOADER
   const imageList = uploadedImage ? (
@@ -57,6 +57,50 @@ const NoteCreate = (props: Props) => {
       </Link>
     </>
   ) : null
+
+
+
+  // Handle Navigation with Unsaved Changes
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+
+  const handleChange = (e, input) => {
+    console.log('in handleChange');
+    if (input === 'title') setNoteTitle(e.target.value);
+    if (input === 'text') setNoteText(e.target.value);
+    setHasUnsavedChanges(true);
+  };
+
+  useEffect(() => {
+    console.log('uploadedImage:', uploadedImage);
+
+    setHasUnsavedChanges(true);
+
+    const handleBeforeUnload = (e) => {
+      console.log('handlingBeforeUnload');
+      if (hasUnsavedChanges) {
+        console.log('hasUnsavedChanges');
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [hasUnsavedChanges, uploadedImage, selectedCategory]);
+
+  const handleNavigation = (url) => {
+    if (hasUnsavedChanges) {
+      const confirmLeave = window.confirm('You have unsaved changes! Are you sure you want to leave?');
+      if (!confirmLeave) {
+        return;
+      }
+      setHasUnsavedChanges(false);
+    }
+    router.push(url);
+  };
 
 
 
@@ -99,7 +143,7 @@ const NoteCreate = (props: Props) => {
       <form onSubmit={formSubmit}>
         <Grid container justifyContent='space-around' >
           <Grid item xs={5.7} className='form-grid-item'>
-            <input className='note-title-input' name='title' type='text' placeholder='Title' value={noteTitle} onChange={(e) => setNoteTitle(e.target.value)} />
+            <input className='note-title-input' name='title' type='text' placeholder='Title' value={noteTitle} onChange={(e) => handleChange(e, 'title')} />
 
         <div className='image-uploader'>
           <div>
@@ -141,7 +185,7 @@ const NoteCreate = (props: Props) => {
           </Grid>
           <Grid item xs={5.7} className='form-grid-item'>
             <CategoryDropdown categories={categoryNames} isActive={isActive} setIsActive={setIsActive} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-            <textarea className='note-text-input' name='text' placeholder='Notes...' value={noteText} onChange={(e) => setNoteText(e.target.value)} />
+            <textarea className='note-text-input' name='text' placeholder='Notes...' value={noteText} onChange={(e) => handleChange(e, 'text')} />
             <SaveNoteButton />
             <DiscardEditButton buttonText='Note' confirmationText='note' />
           </Grid>
