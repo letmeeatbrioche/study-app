@@ -1,6 +1,7 @@
 import { Box, Button, ThemeProvider } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
+import LinkComponent from './LinkComponent'
 
 type Props = {}
 
@@ -15,7 +16,8 @@ const Nav = (props: Props) => {
         height={100}
         display="flex"
         alignItems="center">
-          <Link className='home-button' href={'/'}>RAGGLE FRAGGLE</Link>
+          {/* <Link className='home-button' href={'/'}>RAGGLE FRAGGLE</Link> */}
+          <LinkComponent href={'/'} purpose='home' />
       </Box>
 
     </div>
