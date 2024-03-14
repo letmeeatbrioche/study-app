@@ -7,6 +7,7 @@ const Test = () => {
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
   const handleChange = () => {
+    console.log('in handleChange in app/test/page/tsx');
     setHasUnsavedChanges(true);
   };
 
