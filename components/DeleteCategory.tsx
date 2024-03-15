@@ -1,4 +1,5 @@
 "use client"
+import { revalidateHomePage } from '@/app/actions'
 import { Box, Button } from '@mui/material'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
@@ -24,7 +25,11 @@ const DeleteCategory = (props: Props) => {
         },
         cache: 'no-store'
       })
-      .then((res) => res && router.push(`/`))
+      .then((res) => {
+        revalidateHomePage();
+        return res
+      })
+      .then((res) => res && router.push('/'))
       .catch((error) => {
         console.log('Error deleting category in DeleteCategoryButton:', error)
         alert('Problem deleting category. Please try again.')
