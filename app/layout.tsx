@@ -6,6 +6,7 @@ import "@uploadthing/react/styles.css";
 import CssBaseline from '@mui/material/CssBaseline';
 import Link from 'next/link';
 import { Button } from '@mui/material';
+import LinkComponent from '@/components/LinkComponent';
 
 const inter = Inter({ subsets: ['latin'] })
 
