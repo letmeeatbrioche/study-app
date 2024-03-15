@@ -1,7 +1,8 @@
 import Thumbnail from '@/components/Thumbnail'
-import { Box, Grid, Paper } from '@mui/material'
+import { Box, Button, Grid, Link, Paper } from '@mui/material'
 import { getCategories } from '@/utils/requests'
 import { Category } from '@/models/models'
+import TestButton from '@/components/TestButton'
 
 
 const testProps1 = {
