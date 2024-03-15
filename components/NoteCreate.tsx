@@ -129,8 +129,11 @@ const NoteCreate = (props: Props) => {
       body: JSON.stringify(formObject),
       cache: 'no-store',
     })
+    .then((res) => (
+      res.json()
+    ))
     .then((res) => {
-      router.push(`/category/${selectedCategory}`);
+      router.push(`/note-view/${res.noteId}`)
     })
     .catch((error) => {
       console.log('Error creating note in NoteCreate:', error)
