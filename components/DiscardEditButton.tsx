@@ -15,7 +15,7 @@ const DiscardEditButton = (props: Props) => {
     confirm(`Are you sure you want to discard ${props.confirmationText}?`);
   }
   return (
-    <Link href={`/note-view/${props.noteId}`}>
+    <Link href={`/note/${props.noteId}`}>
       <Button onClick={() => discardConfirm()}>
         Discard {props.buttonText}
       </Button>

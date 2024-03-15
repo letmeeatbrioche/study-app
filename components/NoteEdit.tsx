@@ -131,7 +131,7 @@ const NoteEdit = (props: Props) => {
       cache: 'no-store',
     })
     .then((res) => {
-      router.push(`/note-view/${id}`);
+      router.push(`/note/${id}`);
     })
     .catch((error) => {
       console.log('Error creating note in NoteEdit:', error)

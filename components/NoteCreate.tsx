@@ -133,7 +133,7 @@ const NoteCreate = (props: Props) => {
       res.json()
     ))
     .then((res) => {
-      router.push(`/note-view/${res.noteId}`)
+      router.push(`/note/${res.noteId}`)
     })
     .catch((error) => {
       console.log('Error creating note in NoteCreate:', error)

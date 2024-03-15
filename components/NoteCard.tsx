@@ -14,7 +14,7 @@ const NoteCard = (props: Props) => {
   // const truncatedText = text.slice(0, 49);
   return (
     <Card sx={{ flex: '1 0 auto', maxWidth: 345 }}>
-      <CardActionArea href={`/note-view/${props.id}`}>
+      <CardActionArea href={`/note/${props.id}`}>
         <CardMedia
         sx={{ height: 140 }}
         image={props.image}
