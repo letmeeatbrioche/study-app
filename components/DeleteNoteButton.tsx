@@ -30,7 +30,7 @@ const DeleteNoteButton = (props: Props) => {
 
   const confirmDelete = () => {
     console.log(`props.id: ${props.id}, props.categoryId: ${props.categoryId}`);
-    const confirmed = confirm(`Are you sure you want to delete this note? ID: ${props.id}`);
+    const confirmed = confirm(`Are you sure you want to permanently delete this note?`);
     if (confirmed) {
       const deleteNote = fetch(`http://localhost:3000/api/note/${props.id}`, {
         method: 'DELETE',
