@@ -35,7 +35,8 @@ export async function POST(req) {
     console.log('reqObject (query):', query);
     const createdNote = await collections.notes?.insertOne(query);
     if (createdNote) {
-      return NextResponse.json({success: true});
+      const noteId = createdNote.insertedId.toString();
+      return NextResponse.json({'noteId': noteId});
     } else {
       return NextResponse.json({success: false, reason: 'Falsy result'})
     }
