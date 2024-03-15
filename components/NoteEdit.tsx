@@ -4,7 +4,7 @@ import SaveNoteButton from './SaveNoteButton'
 import DiscardEditButton from './DiscardEditButton'
 import CategoryDropdown from './CategoryDropdown'
 import ImageUpload from './ImageUpload'
-import { Grid, Paper } from '@mui/material'
+import { Box, Grid, Paper } from '@mui/material'
 
 // IMAGE UPLOADER
 import { UploadButton } from "../utils/uploadthing";
@@ -54,10 +54,13 @@ const NoteEdit = (props: Props) => {
   // IMGAE UPLOADER
   const imageList = uploadedImage ? (
     <>
-      <p>Upload Complete!</p>
+      {/* <p>Upload Complete!</p>
       <Link href={uploadedImage} target='_blank'>
         <img className="uploaded-img" src={uploadedImage} alt="User-uploaded image" />
-      </Link>
+      </Link> */}
+
+        <p>Upload Complete!</p>
+        <img src={uploadedImage} alt={`${props.title} note image`} />
     </>
   ) : null
 
@@ -140,60 +143,73 @@ const NoteEdit = (props: Props) => {
   }
 
   return (
+    <div className='edit-note-container'>
     <Paper className='paper-form' elevation={3}>
-      <h1>Note Edit</h1>
+      {/* <h1>Note Edit</h1> */}
+      <Box sx={{ width: '100%' }}>
       <form onSubmit={formSubmit}>
         <Grid container justifyContent='space-around' >
-          <Grid item xs={5.7} className='form-grid-item'>
+          <Grid item xs={6} className='form-grid-item'>
+            <div className='full-note-left-side' >
             <input className='note-title-input' name='title' type='text' placeholder='Title' value={noteTitle} onChange={(e) => handleChange(e, 'title')} />
 
-        <div className='image-uploader'>
-          <div>
-            {imageList ?
+            <div className='image-uploader'>
               <div>
-                {imageList}
-              </div>
-            : props.image ?
-            <div>
-              <Link href={props.image} target='_blank'>
-                <img className="Note image" src={props.image} alt="User-uploaded image" />
-              </Link>
-            </div>
-            : null
-            }
-
-            <UploadButton
-              className="image-upload-button-container"
-              endpoint="imageUploader"
-              onClientUploadComplete={(res) => {
-                if (res) {
-                  // Do something with the response
-                  const json = JSON.stringify(res);
-                  const image = res[0].url;
-                  console.log("Files (json): ", json);
-                  console.log('res[0].url:', image);
-                  setUploadedImage(image);
+                {imageList ?
+                  <div className='note-image'>
+                    {imageList}
+                  </div>
+                : props.image ?
+                <div className='note-image'>
+                  <Link href={props.image} target='_blank'>
+                    <img src={props.image} alt={`${props.title} note image`} />
+                  </Link>
+                </div>
+                : null
                 }
-                // alert("Upload Completed");
-              }}
-              onUploadError={(error: Error) => {
-                // Do something with the error.
-                alert(`ERROR! ${error.message}`);
-              }}
-            />
-          </div>
-        </div>
 
+                <UploadButton
+                  className="image-upload-button-container"
+                  endpoint="imageUploader"
+                  onClientUploadComplete={(res) => {
+                    if (res) {
+                      // Do something with the response
+                      const json = JSON.stringify(res);
+                      const image = res[0].url;
+                      console.log("Files (json): ", json);
+                      console.log('res[0].url:', image);
+                      setUploadedImage(image);
+                    }
+                    // alert("Upload Completed");
+                  }}
+                  onUploadError={(error: Error) => {
+                    // Do something with the error.
+                    alert(`ERROR! ${error.message}`);
+                  }}
+                />
+              </div>
+            </div>
+            </div>
           </Grid>
-          <Grid item xs={5.7} className='form-grid-item'>
-            <CategoryDropdown categories={categoryNames} isActive={isActive} setIsActive={setIsActive} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-            <textarea className='note-text-input' name='text' placeholder='Notes...' value={noteText} onChange={(e) => handleChange(e, 'text')} />
-            <SaveNoteButton />
-            <DiscardEditButton noteId={id} buttonText='Edits' confirmationText='edits' />
+          <Grid item xs={6} className='form-grid-item'>
+            <div className='full-note-right-side'>
+
+              <CategoryDropdown categories={categoryNames} isActive={isActive} setIsActive={setIsActive} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+
+              <textarea className='note-text-input' name='text' placeholder='Notes...' value={noteText} onChange={(e) => handleChange(e, 'text')} />
+
+              <div className='full-note-buttons'>
+                <SaveNoteButton />
+                <DiscardEditButton noteId={id} buttonText='Edits' confirmationText='edits' />
+              </div>
+
+            </div>
           </Grid>
         </Grid>
       </form>
+      </Box>
     </Paper>
+    </div>
   )
 }
 
