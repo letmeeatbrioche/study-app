@@ -38,11 +38,11 @@ const NoteView = async (props: Props, params: object | undefined) => {
                 </div>
 
                 <div className='full-note-buttons'>
-                  <Link href={`/edit/${props.id}`}>
+                  <a href={`/edit/${props.id}`}>
                     <Button variant="contained">
                       Edit
                     </Button>
-                  </Link>
+                  </a>
 
                   <DeleteNoteButton id={props.id} categoryId={props.category} />
                 </div>
