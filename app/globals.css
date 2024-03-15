@@ -124,13 +124,22 @@
   height: 100%;
 }
 
+.dropdown-container {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* width: 90%; */
+  margin: 20px auto 20px auto;
+  /* height: 100%; */
+}
+
 .full-note-buttons {
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
 
-.view-note-container {
+.view-note-container .edit-note-container {
   /* border: solid black; */
   width: 70%;
   margin: 25px auto;
@@ -169,12 +178,14 @@
 
 .note-text-input {
   width: 100%;
-  height: 50vh;
+  /* height: 50vh; */
+  height: 100%;
   margin: 10% 0;
 }
 
 .note-title-input {
   width: 100%;
+  margin: 20px auto 20px auto;
 }
 
 .home-button {
