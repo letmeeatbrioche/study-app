@@ -189,7 +189,7 @@ const NoteEdit = (props: Props) => {
             <CategoryDropdown categories={categoryNames} isActive={isActive} setIsActive={setIsActive} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             <textarea className='note-text-input' name='text' placeholder='Notes...' value={noteText} onChange={(e) => handleChange(e, 'text')} />
             <SaveNoteButton />
-            <DiscardEditButton buttonText='Note' confirmationText='note' />
+            <DiscardEditButton noteId={id} buttonText='Edits' confirmationText='edits' />
           </Grid>
         </Grid>
       </form>

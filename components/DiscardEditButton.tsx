@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 type Props = {
+  noteId: string,
   buttonText: string,
   confirmationText: string
 }
@@ -14,7 +15,7 @@ const DiscardEditButton = (props: Props) => {
     confirm(`Are you sure you want to discard ${props.confirmationText}?`);
   }
   return (
-    <Link href={'/'}>
+    <Link href={`/note-view/${props.noteId}`}>
       <Button onClick={() => discardConfirm()}>
         Discard {props.buttonText}
       </Button>
